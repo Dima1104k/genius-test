@@ -490,3 +490,26 @@ ul {
   color: var(--color-primary-dark);
   text-underline-offset: 2px;
 }
+/* .checkbox {
+  position: relative;
+}
+.checkbox-input {
+  appearance: none;
+}
+.checkbox-label {
+  padding-left: 24px;
+}
+.checkbox-label::before {
+  position: absolute;
+  content: '';
+  border: 1px solid var(--color-primary-dark);
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  margin-top: 5px;
+  border-radius: 2px;
+}
+.checkbox-input:checked + .checkbox-label::before {
+  background-color: var(--color-secondary-dark);
+} */
