@@ -1,83 +1,11 @@
-@font-face {
-  font-display: swap;
-  font-family: 'Poppins';
-  font-weight: 300;
-  src: url('../fonts/poppins-v24-latin-300.woff2') format('woff2');
-}
+@import './utils/fonts';
 
-@font-face {
-  font-display: swap;
-  font-family: 'Poppins';
-  font-weight: 400;
-  src: url('../fonts/poppins-v24-latin-regular.woff2') format('woff2');
-}
+@import './utils/variables';
 
-@font-face {
-  font-display: swap;
-  font-family: 'Poppins';
-  font-weight: 600;
-  src: url('../fonts/poppins-v24-latin-600.woff2') format('woff2');
-}
+@import './base';
 
-@font-face {
-  font-display: swap;
-  font-family: 'Poppins';
-  font-weight: 900;
-  src: url('../fonts/poppins-v24-latin-900.woff2') format('woff2');
-}
-:root {
-  --color-primary-dark: #31261a;
-  --color-primary-light: #faf4ea;
-  --color-brand-normal: #819b57;
-  --color-secondary-dark: #a18268;
-  --color-brand-dark: #465929;
-  --color-brand-light: #cfcfbc;
-}
+@import './utils/utils';
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-/* Base */
-body {
-  color: var(--color-primary-dark);
-  background-color: var(--color-primary-light);
-  font-family: 'Poppins', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.5;
-  margin: 0;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin-top: 0;
-}
-
-a {
-  display: inline-block;
-}
-address {
-  font-style: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-.visually-hidden {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
 .section {
   padding: 48px 0;
 }
@@ -87,79 +15,11 @@ ul {
   max-width: 1288px;
   padding: 0 24px;
 }
-/* Button */
-.button {
-  color: var(--color-primary-light);
-  background-color: var(--color-brand-normal);
-  border: 2px solid var(--color-brand-normal);
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  padding: 16px 32px;
-}
-.button:hover {
-  background-color: white;
-  color: var(--color-brand-dark);
-}
-/* Link */
-.link {
-  text-decoration: none;
-  color: var(--color-primary-light);
-  transition: color 0.3s;
-}
-.link:hover {
-  color: var(--color-brand-normal);
-}
-/* Header */
-.header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-top: 32px;
-  width: 100%;
-}
-.header-container {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-.header-nav {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  gap: 40px;
-}
-.header-menu {
-  display: flex;
-  gap: 64px;
-  flex-grow: 1;
-  justify-content: center;
-}
-/* Hero section */
-.hero-section {
-  padding: 272px 0;
-  background-image:
-    linear-gradient(
-      102.76deg,
-      rgba(18, 18, 17, 0.78) 2.03%,
-      rgba(18, 18, 17, 0.6) 58.46%,
-      rgba(18, 18, 17, 0) 90.36%
-    ),
-    url('../images/hero-section-background.jpg');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-}
-.hero-title {
-  color: var(--color-primary-light);
-  text-align: center;
-  font-size: 128px;
-  font-weight: 900;
-  margin-bottom: 0;
-}
-.hero-title .accent {
-  color: var(--color-brand-normal);
-}
+@import './components/buttons';
+@import './components/links';
+@import './components/header';
+@import './components/hero-section';
+
 /* Advantages section*/
 .advantages-section {
   padding: 16px 0;
@@ -275,20 +135,42 @@ ul {
   flex-basis: calc((100% - 40px) / 3);
 }
 .format-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   border-radius: 16px;
+  height: 444px;
+  padding: 24px;
+  transition: transform 0.3s;
+}
+.format-card::before {
+  content: '';
   background-image: linear-gradient(
     180deg,
     rgba(49, 38, 26, 0) 55.21%,
     rgba(49, 38, 26, 0.71) 72.92%,
     var(--color-primary-dark) 100%
   );
-  height: 444px;
-  border: 1px solid lightgray; /*remove*/
-  padding: 24px;
-  transition: transform 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 16px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 .format-card:hover {
   transform: scale(1.05);
+}
+.format-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
 }
 .formats-title {
   margin-bottom: 80px;
@@ -296,10 +178,12 @@ ul {
 .format-title {
   font-size: 24px;
   font-weight: 600;
+  color: var(--color-primary-light);
 }
 .format-text {
   font-size: 14px;
   font-weight: 300;
+  color: var(--color-primary-light);
 }
 /* Carousel */
 .carousel-button {
